@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Bricolage Grotesque (display headings) ── */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Plus Jakarta Sans (body) ── */
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans-Variable.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Brand: Warm charcoal + Flame orange + Cream */
+    --background: 0.97 0.008 60;
+    --foreground: 0.18 0.025 30;
+
+    --card: 1 0 0;
+    --card-foreground: 0.18 0.025 30;
+
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.025 30;
+
+    /* Primary: Flame orange */
+    --primary: 0.62 0.19 38;
+    --primary-foreground: 1 0 0;
+
+    /* Secondary: Warm cream */
+    --secondary: 0.94 0.022 70;
+    --secondary-foreground: 0.28 0.04 35;
+
+    --muted: 0.93 0.015 60;
+    --muted-foreground: 0.52 0.02 40;
+
+    /* Accent: Deep red ember */
+    --accent: 0.55 0.18 28;
+    --accent-foreground: 1 0 0;
+
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.88 0.02 55;
+    --input: 0.88 0.02 55;
+    --ring: 0.62 0.19 38;
+
+    --chart-1: 0.646 0.222 41.116;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+
+    --sidebar: 0.985 0 0;
+    --sidebar-foreground: 0.145 0 0;
+    --sidebar-primary: 0.62 0.19 38;
+    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-accent: 0.97 0 0;
+    --sidebar-accent-foreground: 0.205 0 0;
+    --sidebar-border: 0.922 0 0;
+    --sidebar-ring: 0.62 0.19 38;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .food-card-shadow {
+    box-shadow: 0 4px 6px -1px oklch(0.18 0.025 30 / 0.08),
+                0 10px 15px -3px oklch(0.18 0.025 30 / 0.05);
+  }
+  .food-card-shadow-lg {
+    box-shadow: 0 10px 25px -5px oklch(0.18 0.025 30 / 0.12),
+                0 20px 40px -10px oklch(0.18 0.025 30 / 0.08);
+  }
+  .hero-gradient {
+    background: linear-gradient(
+      135deg,
+      oklch(0.18 0.04 28) 0%,
+      oklch(0.22 0.06 32) 40%,
+      oklch(0.28 0.08 38) 100%
+    );
+  }
+  .flame-gradient {
+    background: linear-gradient(135deg, oklch(0.68 0.19 42), oklch(0.55 0.2 28));
+  }
+  .noise-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+}
